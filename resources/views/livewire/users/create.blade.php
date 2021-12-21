@@ -1,6 +1,6 @@
 <div class="col-md-5">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
-        Creaet New User
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#formModal">
+        New User
     </button>
 
 </div>

@@ -12,18 +12,22 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
+</head>
 </head>
 
-<body style="min-height: 75rem;padding-top: 5rem;">
+<body style="min-height: 50rem;padding-top: 5rem;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
             <div class="container">
@@ -37,21 +41,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
 
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/actions/receive"> <span
-                                        class="bi bi-ui-checks-grid"></span>
+                                <a class="nav-link" href="/actions/receive"> <span class="bi bi-ui-checks-grid"></span>
                                     Receive
                                 </a>
                             </li>
@@ -160,8 +157,9 @@
             $('#formModal').modal('hide');
         });
         window.addEventListener('toastr', event => {
-            $('#liveToast').toast('show');
-            $('#toastMsg').html(event.detail.message);
+            //$('#liveToast').toast('show');
+            //$('#toastMsg').html(event.detail.message);
+            toastr.success(event.detail.message);
         });
     </script>
 </body>

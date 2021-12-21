@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('/home');
 })->middleware('auth');
 
-Route::view('/users', 'livewire.users.home');
+Route::view('/users', 'livewire.users.home')->middleware('auth');
 
 Auth::routes();
 

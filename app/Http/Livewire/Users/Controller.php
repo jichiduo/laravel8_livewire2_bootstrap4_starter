@@ -75,7 +75,7 @@ class Controller extends Component
     {
         $validatedDate = $this->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,' . $this->user_id,
         ]);
 
         if ($this->user_id) {
@@ -93,8 +93,12 @@ class Controller extends Component
     public function delete($id)
     {
         if ($id) {
-            User::where('id', $id)->delete();
-            $this->dispatchBrowserEvent('toastr', ['message' => 'User Successfully deleted.']);
+            if ($id == 1) {
+                $this->dispatchBrowserEvent('toastr', ['message' => 'You can not delete this user.']);
+            } else {
+                User::where('id', $id)->delete();
+                $this->dispatchBrowserEvent('toastr', ['message' => 'User Successfully deleted.']);
+            }
         }
     }
 }
